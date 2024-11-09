@@ -9,3 +9,8 @@ class Post extends Model
 {
     use HasFactory;
 }
+
+if (true)
+{
+
+}

@@ -11,3 +11,8 @@ class Post extends Model
 
     public $someProperty;
 }
+
+if (true)
+{
+
+}

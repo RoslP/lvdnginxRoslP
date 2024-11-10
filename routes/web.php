@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +18,5 @@ Route::get('/', function () {
 
 Route::get('/home', function () {return 'this is home page';});
 Route::get('/home2', 'App\Http\Controllers\MyFirstController@index123');
+Route::get('/posts', 'App\Http\Controllers\PostsController@index');
+

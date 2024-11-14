@@ -1,12 +1,11 @@
 @extends('layouts.main')
 @section('content')
     <div>
-        this is posts page
         <div>
             @foreach($posts as $post)
-                {{ $post->title }} <br>
+              <a href="{{ route('post.show',$post->id)  }}"> {{ $post->id }}. {{ $post->post_content }} </a><br>
             @endforeach
         </div>
-
     </div>
 @endsection
+

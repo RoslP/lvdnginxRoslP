@@ -13,5 +13,5 @@ class Post extends Model
 
     public $someProperty;
     protected $table = 'posts'; //нужно указывать название таблицы для модели даже если она создавалась с миграцией (так приняито)
-    protected $fillable = ['title', 'content', 'likes', 'is_published'];
+    protected $fillable = ['title', 'post_content', 'likes', 'is_published','image'];
 }

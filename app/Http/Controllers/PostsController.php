@@ -10,39 +10,52 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('posts',compact('posts'));
+        return view('post.index',compact('posts'));
 
     }
     public function create()
     {
-        $postsArr = [
-            [
-                'title'=>'laravel orm create method',
-                'content'=>'some content',
-                'likes'=>'23',
-                'is_published'=>1,
-            ],
-            [
-                'title'=>'another laravel orm create method',
-                'content'=>'another some content',
-                'likes'=>'25',
-                'is_published'=>0,
-            ]
-        ];
-        foreach ($postsArr as $post) {
-            Post::create($post);
-        }
+       return view('post.create');
     }
-    public function update()
+    public function store()
     {
-        Post::find(4)->update(['title'=>'laravel update method']);
+        $data = request()->validate([
+            'title'=>'string',
+            'post_content'=>'string',
+            'image'=>'string']);
+        Post::create($data);
+        return redirect()->route('post.index');
     }
-    public function delete()
+    public function show(Post $post)
     {
-        Post::find(1)->delete();
+        return view('post.show',compact('post'));
+    }
+    public function edit(Post $post)
+    {
+        return view('post.edit',compact('post'));
+    }
+    public function update(Post $post)
+    {
+       $data = request()->validate([
+           'title'=>'string',
+           'post_content'=>'string',
+           'image'=>'string'
+       ]);
+       $post->update($data);
+       return redirect()->route('post.show',$post->id);
+    }
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return redirect()->route('post.index');
     }
     public function firstOrCreate()
     {
         Post::firstOrCreate(['title'=>'some post'],['title'=>'laravel firstOrCreate method','content'=>'some content']);
+    }
+    public function restore()
+    {
+        Post::withTrashed()->find(1)->restore();
+        dump('restored');
     }
 }

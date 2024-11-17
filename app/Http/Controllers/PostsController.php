@@ -31,8 +31,8 @@ class PostsController extends Controller
     public function store()
     {
         $data = request()->validate([
-            'title' => 'string',
-            'post_content' => 'string',
+            'title' => 'required | string',
+            'post_content' => 'required | string',
             'image' => 'string',
             'category_id' => 'int',
             'tags' => ''
@@ -52,18 +52,23 @@ class PostsController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
-        return view('post.edit', compact(['post', 'categories']));
+        $tags = Tag::all();
+        return view('post.edit', compact(['post', 'categories','tags']));
     }
 
     public function update(Post $post)
     {
         $data = request()->validate([
-            'title' => 'string',
-            'post_content' => 'string',
+            'title' => 'required | string',
+            'post_content' => 'required | string',
             'image' => 'string',
-            'category_id' => ''
+            'category_id' => '',
+            'tags' => ''
         ]);
+        $tags = $data['tags'];
+        unset($data['tags']);
         $post->update($data);
+        $post->tags()->sync($tags);
         return redirect()->route('post.show', $post->id);
     }
 

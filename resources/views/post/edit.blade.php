@@ -9,10 +9,20 @@
                 <input type="text" name="title" class="form-control" id="title" placeholder="Название поста"
                        value="{{ $post->title }}">
             </div>
+            <div class="mb-0">
+                @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
             <div class="mb-3">
                 <label for="post_content" class="form-label">Content</label>
                 <textarea type="text" name="post_content" class="form-control" id="post_content"
-                          placeholder="Введите содержимое поста"> {{ $post->post_content}}</textarea>
+                          placeholder="Введите содержимое поста"> {{ $post->post_content}} </textarea>
+            </div>
+            <div class="mb-0">
+                @error('post_content')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">image</label>
@@ -31,6 +41,19 @@
                     @endforeach
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="tags" class="form-label">tags</label>
+                <select name="tags[]" class="form-select" multiple>
+                    @foreach( $tags as $tag)
+                        <option value=" {{ $tag->id }}"
+                        @foreach( $post->tags as $postTag)
+                            {{ $postTag->id === $tag->id ? 'selected':'' }}
+                            @endforeach>
+                            {{ $tag->title }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
         <div class="mb-3"></div>
@@ -43,4 +66,3 @@
         </div>
     </div>
 @endsection
-

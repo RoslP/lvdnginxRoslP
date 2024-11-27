@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         Category::factory(20)->create();
         $tags = Tag::factory(40)->create();
-        $posts = Post::factory(20)->create();
+        $posts = Post::factory(200)->create();
         foreach ($posts as $post) {
             $tagIds = $tags->random(5)->pluck('id');
             $post->tags()->attach($tagIds);

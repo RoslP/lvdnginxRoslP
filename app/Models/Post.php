@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- *
+ * 
  *
  * @property int $id
  * @property string $title
@@ -38,12 +39,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Post withoutTrashed()
+ * @method static \Database\Factories\PostFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Post filter(\App\Http\Filters\FilterInterface $filter)
  * @mixin \Eloquent
  */
 class Post extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use Filterable;
 
     public $someProperty;
     protected $table = 'posts'; //нужно указывать название таблицы для модели даже если она создавалась с миграцией (так приняито)

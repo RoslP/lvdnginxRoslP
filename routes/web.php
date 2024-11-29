@@ -16,7 +16,7 @@ use App\Http\Controllers\AboutController;
 |
 */
 
-Route::get('/',[\App\Http\Controllers\HomeController::class,'index']);
+Route::get('/',[\App\Http\Controllers\HomeController::class,'index'])->name('home');
 
 Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
     Route::get('/posts', IndexController::class)->name('post.index');
@@ -28,7 +28,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
     Route::delete('/posts/{post}', DestroyController::class)->name('post.delete');
 });
 
-Route::group(['namespace' => '\App\Http\Controllers\Admin\Post'], function () {
+Route::group(['namespace' => '\App\Http\Controllers\Admin\Post','middleware'=>'admin'], function () {
     Route::prefix('/admin')->group(function () {
         Route::get('/post', 'IndexController')->name('admin.post.index');
     });

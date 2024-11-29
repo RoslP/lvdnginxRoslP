@@ -112,4 +112,7 @@ return [
 
     'password_timeout' => 10800,
 
+    'policies'=>[
+        \App\Models\User::class=> \App\Policies\AdminPolicy::class,
+    ]
 ];

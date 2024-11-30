@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Requests\Post;
-
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
@@ -25,8 +26,20 @@ class StoreRequest extends FormRequest
             'title' => 'required | string',
             'post_content' => 'required | string',
             'image' => 'string',
-            'category_id' => 'int',
+            'likes'=>'int',
+            'category' => '',
             'tags' => '',
+            'tags.*.title'=>''
         ];
+    }
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(
+            response()->json([
+                'status' => 'error',
+                'message' => 'Validation failed',
+                'errors' => $validator->errors(),
+            ], 422)
+        );
     }
 }

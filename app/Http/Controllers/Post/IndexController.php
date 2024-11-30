@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Post;
 
 use App\Http\Filters\PostFilter;
 use App\Http\Requests\Post\FilterRequest;
-use App\Http\Resources\Post\StoreResource;
+use App\Http\Resources\Post\PostResource;
 use App\Models\Post;
 use Illuminate\Contracts\Container\BindingResolutionException;
 
@@ -20,7 +20,7 @@ class IndexController extends BaseController
         $pageNumber=$data['page_number']??2;
         $filter = app()->make(PostFilter::class, ['queryParams' => array_filter($data)]);
         $posts = Post::filter($filter)->paginate($perPage,['*'],"page",$pageNumber)->withQueryString();
-        return StoreResource::collection($posts);
+        return PostResource::collection($posts);
 //        return view('post.index', compact('posts'));
     }
 }

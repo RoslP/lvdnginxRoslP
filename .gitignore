@@ -5,6 +5,7 @@
 /public/storage
 /public/plugins
 /public/dist
+/public/excel
 /storage/*.key
 /vendor
 .env

@@ -6,6 +6,6 @@ class ImportDataClient
     public $client;
     public function __construct()
     {
-        $this->client= new Client(['base_uri' => 'https://jsonplaceholder.typicode.com/','timeout'  => 10.0]);
+        $this->client= new Client(['base_uri' => 'https://jsonplaceholder.typicode.com/','timeout'  => 12.0]);
     }
 }

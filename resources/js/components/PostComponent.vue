@@ -5,6 +5,14 @@ export default {
   name: "PostComponent",
   components: {
     SingePostComponent
+  },
+  data() {
+    return {
+      name: 'Oleg',
+      age: '42',
+      boolean: false,
+      someNull: null
+    }
   }
 }
 
@@ -13,6 +21,8 @@ export default {
 <template>
   <div><p>This is PostComponent </p>
     <SingePostComponent></SingePostComponent>
+    name : {{name}}
+    age : {{age}}
   </div>
 </template>
 

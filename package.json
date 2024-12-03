@@ -14,5 +14,9 @@
         "sass": "^1.56.1",
         "vite": "^5.0.0",
         "vue": "^3.2.37"
+    },
+    "dependencies": {
+        "@volar/language-server": "2.4.0-alpha.18",
+        "@vue/language-server": "2.0.28"
     }
 }

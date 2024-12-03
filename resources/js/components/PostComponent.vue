@@ -43,6 +43,13 @@ export default {
   computed: {
     computedMethod() {
       return 'my name is Oleg'
+    },
+    personsMore20()
+    {
+      return this.persons.filter(function (person)
+      {
+        return person.age > 20
+      })
     }
   }
 }
@@ -58,7 +65,7 @@ export default {
   </div>
   <button type="button" @click="this.sayHello()">Hello</button>
   <button type="button" @click="this.sayHi()">Hi</button>
-  <div v-for="person in persons">
+  <div v-for="person in personsMore20">
     <div>{{person.name}}</div>
     <div>{{person.age}}</div>
     <div>{{person.job}}</div>

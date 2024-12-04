@@ -1,9 +1,11 @@
 <script>
 import SingePostComponent from "./SingePostComponent.vue";
+import AxiosComponent from "./AxiosComponent.vue";
 
 export default {
   name: "PostComponent",
   components: {
+      AxiosComponent,
     SingePostComponent
   },
   data() {
@@ -59,6 +61,7 @@ export default {
 <template>
   <div><p>This is PostComponent </p>
     <SingePostComponent></SingePostComponent>
+      <axios-component></axios-component>
     name : {{ name }}
     age : {{ age }}
     computed : {{ computedMethod }}

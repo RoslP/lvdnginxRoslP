@@ -42,3 +42,4 @@ Route::get('/main', 'App\Http\Controllers\MainController@index')->name('main.ind
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/axios/test', [App\Http\Controllers\AxiosController::class, '__invoke']);

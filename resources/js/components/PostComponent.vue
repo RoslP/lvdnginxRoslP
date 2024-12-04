@@ -1,33 +1,25 @@
 <script>
 
+import CreateComponent from "@/components/CreateComponent.vue";
+
 export default {
     name: "SomeAxiosComponent",
+    components: {CreateComponent},
     data() {
         return {
             someData: null
         }
     },
     methods: {
-        testAxiosWork() {
-            axios.get('/axios/test')
-                .then(data => {
-                    this.someData = data.data
-                })
-        }
     },
     mounted() {
-        this.testAxiosWork()
     }
 }
 
 </script>
 
 <template>
-<div v-for="data in someData">
-    <div>{{data['data 1']}}</div>
-    <div>{{data['data 2']}}</div>
-    <div>{{data['data 3']}}</div>
-</div>
+    <create-component></create-component>
 </template>
 
 <style scoped>

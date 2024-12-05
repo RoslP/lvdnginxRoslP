@@ -24,6 +24,15 @@ export default {
             this.job = job
             console.log(this.editPersonId)
         },
+        deletePeople(id) {
+            if (confirm('Wanna delete ?')) {
+                axios.delete(`/api/people/${id}`)
+                    .then(res => {
+                        this.getPeople()
+                        console.log(res)
+                    })
+            }
+        }
     },
     data() {
         return {
@@ -50,6 +59,7 @@ export default {
                 <th scope="col">Age</th>
                 <th scope="col">Job</th>
                 <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -64,6 +74,9 @@ export default {
                                 class="btn btn-success">Edit
                         </button>
                     </td>
+                    <td>
+                        <button @click="deletePeople(people.id)" class="btn btn-danger">Delete</button>
+                    </td>
                 </template>
 
                 <template v-else>
@@ -73,6 +86,9 @@ export default {
                     <td><input type="text" class="form-control w-auto" v-model="this.job"/></td>
                     <td>
                         <button @click.prevent="updatePeople(people.id)" class="btn btn-success">Update</button>
+                    </td>
+                    <td>
+                        <button @click="deletePeople(people.id)" class="btn btn-danger">Delete</button>
                     </td>
                 </template>
             </tr>

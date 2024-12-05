@@ -1,8 +1,12 @@
 <script>
 import axios from "axios";
+import SomeComponent from "./SomeComponent.vue";
 
 export default {
     name: "IndexComponent",
+    components: {
+        SomeComponent
+    },
     methods: {
         getPeople() {
             axios.get('/api/people')
@@ -32,6 +36,9 @@ export default {
                         console.log(res)
                     })
             }
+        },
+        getIndexLog() {
+            console.log('this is index component')
         }
     },
     data() {
@@ -41,15 +48,22 @@ export default {
             name: null,
             job: null,
             age: null,
+            obj: {
+                color: 'red',
+                number: 11,
+                isPublished: true
+            }
         }
     },
     mounted() {
         this.getPeople()
+        this.$parent.parentLog()
     },
 }
 </script>
 
 <template>
+    <some-component :obj=obj></some-component>
     <div class="mb-3">
         <table class="table">
             <thead>

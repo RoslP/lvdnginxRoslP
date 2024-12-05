@@ -1,9 +1,10 @@
 <script>
 
-import CreateComponent from "@/components/CreateComponent.vue";
-import IndexComponent from "@/components/IndexComponent.vue";
+import CreateComponent from "./CreateComponent.vue";
+import IndexComponent from "./IndexComponent.vue";
+
 export default {
-    name: "SomeAxiosComponent",
+    name: "PostComponent",
     components: {IndexComponent, CreateComponent},
     data() {
         return {
@@ -11,16 +12,22 @@ export default {
         }
     },
     methods: {
+        parentLog() {
+            console.log('this is parent component')
+        },
+        parentLog2() {
+            console.log('this is parent component1231232')
+        },
     },
     mounted() {
+        this.$refs.index.getIndexLog()
     }
 }
-
 </script>
 
 <template>
     <create-component></create-component>
-    <index-component></index-component>
+    <index-component ref="index"></index-component>
 </template>
 
 <style scoped>

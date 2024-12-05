@@ -37,3 +37,9 @@ Route::group(['namespace'=>"App\Http\Controllers\Post",'middleware'=>'jwt.auth']
     Route::patch('/posts/{post}', UpdateController::class);
     Route::delete('/posts/{post}', DestroyController::class);
 });
+Route::group(['namespace'=>"App\Http\Controllers\Person",'prefix'=>'people'],function (){
+Route::post('/',StoreController::class);
+Route::get('/',IndexController::class);
+Route::patch('/{person}',UpdateController::class);
+Route::delete('/{person}',DestroyController::class);
+});

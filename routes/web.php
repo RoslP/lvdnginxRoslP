@@ -42,4 +42,5 @@ Route::get('/main', 'App\Http\Controllers\MainController@index')->name('main.ind
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/{page}',\App\Http\Controllers\IndexController1::class)->where('page', '.*');
 

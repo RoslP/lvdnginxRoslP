@@ -40,6 +40,7 @@ Route::group(['namespace'=>"App\Http\Controllers\Post",'middleware'=>'jwt.auth']
 Route::group(['namespace'=>"App\Http\Controllers\Person",'prefix'=>'people'],function (){
 Route::post('/',StoreController::class);
 Route::get('/',IndexController::class);
+Route::get('/{person}',ShowController::class);
 Route::patch('/{person}',UpdateController::class);
 Route::delete('/{person}',DestroyController::class);
 });

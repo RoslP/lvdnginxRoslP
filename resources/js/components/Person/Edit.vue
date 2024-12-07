@@ -24,7 +24,7 @@ export default {
     },
     update() {
       axios.patch(`/api/people/${this.id}`, {name: this.name, age: this.age, job: this.job})
-          .then(() => router.push({name: 'person.index'}))
+          .then(() => router.push({name: 'person.show', params: {id: this.id}}))
     }
   },
   mounted() {

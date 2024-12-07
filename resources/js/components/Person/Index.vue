@@ -34,6 +34,7 @@ export default {
         <th scope="col">Name</th>
         <th scope="col">Age</th>
         <th scope="col">Job</th>
+        <th scope="col">Edit</th>
       </tr>
       </thead>
       <tbody>
@@ -42,6 +43,7 @@ export default {
         <td>{{ people.name }}</td>
         <td>{{ people.age }}</td>
         <td>{{ people.job }}</td>
+        <td><router-link class="btn btn-warning" :to="{name: 'person.edit', params:{id:people.id}}">Edit</router-link></td>
       </tr>
       </tbody>
     </table>

@@ -19,6 +19,10 @@ const routes = [
     {
         path: '/people/:id/edit',component: ()=> import('./components/Person/Edit.vue'),
         name: 'person.edit'
+    },
+    {
+        path: '/people/:id',component: ()=>import('./components/Person/Show.vue'),
+        name: 'person.show'
     }
 ];
 

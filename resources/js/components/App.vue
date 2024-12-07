@@ -5,8 +5,7 @@ export default {
 </script>
 
 <template>
-    <router-link to="/1">Posts</router-link>
-    <router-link to="/tag">Tags</router-link>
+  <router-link :to="{name : 'person.index'}"> People </router-link>
     <router-view></router-view>
 </template>
 

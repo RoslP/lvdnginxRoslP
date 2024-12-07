@@ -7,7 +7,11 @@ import TagComponent from "@/components/TagComponent.vue";
 // Определите маршруты
 const routes = [
     {path: '/1', component: PostComponent},
-    {path: '/tag',component: TagComponent}
+    {path: '/tag', component: TagComponent},
+    {
+        path: '/people', component: ()=> import('./components/Person/Index.vue'),
+        name: 'person.index'
+    }
 ];
 
 // Создайте роутер с использованием истории браузера

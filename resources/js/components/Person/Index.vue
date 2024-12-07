@@ -16,6 +16,11 @@ export default {
           .then(res => {
             this.peoples = res.data
           })
+    },
+    deletePeople(id)
+    {
+      axios.delete(`/api/people/${id}`)
+          .then(this.getPeoples)
     }
   },
 
@@ -39,11 +44,12 @@ export default {
       </thead>
       <tbody>
       <tr v-for="people in this.peoples">
-        <th scope="row">{{ people.id }}</th>
+        <th scope="row"><router-link :to="{name:'person.show',params:{id:people.id}}">{{ people.id }}</router-link></th>
         <td>{{ people.name }}</td>
         <td>{{ people.age }}</td>
         <td>{{ people.job }}</td>
         <td><router-link class="btn btn-warning" :to="{name: 'person.edit', params:{id:people.id}}">Edit</router-link></td>
+        <td> <a @click.prevent="deletePeople(people.id)" href="#" class="btn btn-outline-danger">Delete</a></td>
       </tr>
       </tbody>
     </table>

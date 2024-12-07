@@ -14,7 +14,7 @@ export default {
   methods: {
     store() {
       axios.post('/api/people/', {name: this.name, age: this.age, job: this.job})
-          .then(() => router.push('person.index'))
+          .then(() => router.push({name: 'person.index'}))
     }
   }
 }

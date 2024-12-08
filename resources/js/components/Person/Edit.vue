@@ -16,10 +16,10 @@ export default {
     getPerson() {
       axios.get(`/api/people/${this.$route.params.id}`)
           .then(res => {
-            this.name = res.data.name
-            this.age = res.data.age
-            this.job = res.data.job
-            this.id = res.data.id
+            this.name = res.data.data.name
+            this.age = res.data.data.age
+            this.job = res.data.data.job
+            this.id = res.data.data.id
           })
     },
     update() {

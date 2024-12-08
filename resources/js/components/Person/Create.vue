@@ -16,7 +16,13 @@ export default {
       axios.post('/api/people/', {name: this.name, age: this.age, job: this.job})
           .then(() => router.push({name: 'person.index'}))
     }
-  }
+  },
+    computed:{
+        isDisable()
+        {
+            return this.name && this.age && this.job
+        }
+    }
 }
 </script>
 
@@ -26,7 +32,7 @@ export default {
       <input type="text" v-model="name" placeholder="name" class="form-control mb-2 mt-2">
       <input type="number" v-model="age" placeholder="age" class="form-control mb-2">
       <input type="text" v-model="job" placeholder="job" class="form-control mb-2">
-      <input @click.prevent="store" type="submit" value="Add" class="btn btn-primary mb-2">
+      <input :disabled="!isDisable" @click.prevent="store" type="submit" value="Add" class="btn btn-primary mb-2">
     </div>
   </div>
 </template>

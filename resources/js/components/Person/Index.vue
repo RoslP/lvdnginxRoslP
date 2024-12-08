@@ -14,7 +14,7 @@ export default {
     getPeoples() {
       axios.get('/api/people/')
           .then(res => {
-            this.peoples = res.data
+            this.peoples = res.data.data
           })
     },
     deletePeople(id)

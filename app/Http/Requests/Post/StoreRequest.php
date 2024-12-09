@@ -25,11 +25,6 @@ class StoreRequest extends FormRequest
         return [
             'title' => 'required | string',
             'post_content' => 'required | string',
-            'image' => 'string',
-            'likes'=>'int',
-            'category' => '',
-            'tags' => '',
-            'tags.*.title'=>''
         ];
     }
     public function failedValidation(Validator $validator)

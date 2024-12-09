@@ -36,5 +36,7 @@ Route::middleware('auth')->group(function () {
 });
 Route::namespace('App\Http\Controllers\Post')->group(function () {
     Route::get('/post',IndexController::class)->name('post.index');
+    Route::get('/post/create',CreateController::class)->name('post.create');
+    Route::post('/post/create',StoreController::class);
 });
 require __DIR__.'/auth.php';

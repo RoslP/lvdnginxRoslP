@@ -32,6 +32,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::namespace('App\Http\Controllers\Message')->group(function () {
         Route::get('/messages',IndexController::class)->name('messages.index');
+        Route::post('/messages',StoreController::class)->name('messages.store');
     });
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -4,19 +4,20 @@ export default {
     props: ['messages'],
     methods: {
         storeMessage() {
-            axios.post('/messages',{body: this.body})
+            axios.post('/messages', {body: this.body})
                 .then(res=>{
-                    console.log(res)
+                    this.messages.unshift(res.data)
+                    this.body = ''
                 })
         }
     },
     mounted() {
         console.log(this.messages)
     },
-    data(){
-      return {
-          'body':null
-      }
+    data() {
+        return {
+            'body': null
+        }
     }
 }
 </script>

@@ -11,6 +11,6 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        return inertia('Messages/MessagesIndex',['messages'=>MessageCreateResource::collection(Massage::all())->resolve()]);
+        return inertia('Messages/MessagesIndex',['messages'=>MessageCreateResource::collection(Massage::orderBy('created_at','desc')->get())->resolve()]);
     }
 }

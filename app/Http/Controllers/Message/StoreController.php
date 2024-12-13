@@ -13,7 +13,7 @@ class StoreController extends Controller
     public function __invoke(StoreRequest $request)
     {
         $message=Massage::firstOrCreate($request->validated());
-        event(new StoreMessageEvent($message));
+        broadcast(new StoreMessageEvent($message))->toOthers();
        return MessageCreateResource::make($message)->resolve();
     }
 }

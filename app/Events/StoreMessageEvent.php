@@ -22,9 +22,9 @@ class StoreMessageEvent implements ShouldBroadcast
     /**
      * Create a new event instance.
      */
-    public function __construct($message)
+    public function __construct(Massage $message)
     {
-        $this->$message = $message;
+        $this->massage = $message;
     }
 
     /**

@@ -45,9 +45,9 @@ export default {
             <div v-if="messages.length > 0">
                 <h3 class="text-lg mb-8">Messages</h3>
                 <div v-for="message in messages">
-                    <p>{{ message.id }}</p>
+                    <p>Сообщение № {{ message.id }}</p>
                     <p>{{ message.body }}</p>
-                    <p>{{ message.created_at }}</p>
+                    <p class="pb-6 text-sm">{{ message.created_at }}</p>
                 </div>
             </div>
         </div>

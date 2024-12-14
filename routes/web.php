@@ -34,6 +34,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/messages',IndexController::class)->name('messages.index');
         Route::post('/messages',StoreController::class)->name('messages.store');
     });
+    Route::namespace('App\Http\Controllers\User')->group(function () {
+        Route::get('/user/{user}',IndexController::class)->name('show');
+        Route::post('/user/{user}',StoreController::class)->name('store');
+    });
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

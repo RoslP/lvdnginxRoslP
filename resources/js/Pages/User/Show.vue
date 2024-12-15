@@ -10,7 +10,7 @@ export default {
         }
     },
     created() {
-        window.Echo.channel(`dynamicChannel.${this.$page.props.user.id}`)
+        window.Echo.private(`dynamicChannel.${this.$page.props.user.id}`)
             .listen('.dynamic_event', res => {
                 this.ms_str = res.broadcast_data
             })

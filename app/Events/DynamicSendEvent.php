@@ -34,7 +34,7 @@ class DynamicSendEvent implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new Channel("dynamicChannel.{$this->uid}"),
+            new PrivateChannel("dynamicChannel.{$this->uid}"),
         ];
     }
 

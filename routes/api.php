@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::namespace('App\Http\Controllers\User')->group(function () {
+    Route::post('/users', StoreController::class);
+});
+Route::namespace('App\Http\Controllers\Cars')->group(function () {
+    Route::get('/cars', IndexController::class);
+});

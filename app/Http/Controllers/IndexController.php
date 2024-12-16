@@ -9,5 +9,6 @@ class IndexController extends BaseController
    public function __invoke()
    {
       return view('main.index');
+
    }
 }

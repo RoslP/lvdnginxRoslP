@@ -23,3 +23,12 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
 Route::namespace('App\Http\Controllers\Cars')->group(function () {
     Route::get('/cars', IndexController::class);
 });
+Route::namespace('App\Http\Controllers')->controller(AuthController::class)->middleware(['api' ])->prefix('auth')
+    ->group(function ($router) {
+
+        Route::post('login', 'login');
+        Route::post('logout', 'logout');
+        Route::post('refresh', 'refresh');
+        Route::post('me', 'me');
+
+    });

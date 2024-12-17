@@ -10,10 +10,13 @@ export default {
     },
     methods: {
         getCars() {
-            axios.get('/api/cars')
+            axios.get('/api/auth/cars',{
+                headers:{
+                    'Authorization': `Bearer  ${JSON.parse(localStorage.getItem('access_token'))}`
+                }
+            })
                 .then(res => {
                     this.cars = res.data
-                    console.log(res)
                 })
         }
     },

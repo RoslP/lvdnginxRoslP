@@ -1,5 +1,5 @@
 <script>
-import axios from "axios";
+import API from '../../api.js'
 
 export default {
     name: "Index",
@@ -10,7 +10,7 @@ export default {
     },
     methods: {
         getCars() {
-            axios.get('/api/cars')
+            API.get('/api/auth/cars')
                 .then(res => {
                     this.cars = res.data
                 })
@@ -33,10 +33,10 @@ export default {
             </tr>
             </thead>
             <tbody>
-            <tr v-if="this.cars" v-for="car in this.cars">
-                    <th scope="row">{{car.id}}</th>
-                    <td>{{car.model}}</td>
-                    <td>{{car.price}}</td>
+            <tr v-if="typeof this.cars==='object' || Array.isArray(this.cars)" v-for="car in this.cars">
+                <th scope="row">{{ car.id }}</th>
+                <td>{{ car.model }}</td>
+                <td>{{ car.price }}</td>
             </tr>
             </tbody>
         </table>

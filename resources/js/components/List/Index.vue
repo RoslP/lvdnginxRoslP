@@ -13,6 +13,7 @@ export default {
             axios.get('/api/cars')
                 .then(res => {
                     this.cars = res.data
+                    console.log(res)
                 })
         }
     },
@@ -33,7 +34,7 @@ export default {
             </tr>
             </thead>
             <tbody>
-            <tr v-if="this.cars" v-for="car in this.cars">
+            <tr v-if="typeof this.cars==='object' || Array.isArray(this.cars)" v-for="car in this.cars">
                     <th scope="row">{{car.id}}</th>
                     <td>{{car.model}}</td>
                     <td>{{car.price}}</td>

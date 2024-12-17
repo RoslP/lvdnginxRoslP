@@ -3,6 +3,7 @@
         <router-link class="pe-2" :to="{name:'list.index'}">List of some data</router-link>
         <router-link class="pe-2" :to="{name:'users.login'}">Login</router-link>
         <router-link class="pe-2" :to="{name:'users.registration'}">Registration</router-link>
+        <router-link class="pe-2" :to="{name:'users.personal'}">Personal</router-link>
         <router-view></router-view>
     </div>
 </template>
